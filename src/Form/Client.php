@@ -49,4 +49,15 @@ class Client extends BaseApi
     {
         return $this->httpPut(sprintf('/form/%s', $formCode), $data);
     }
+
+    /**
+     * @param $formCode
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function destroy($formCode, array $query = [])
+    {
+        return $this->httpDelete(sprintf('/form/%s', $formCode), $query);
+    }
 }

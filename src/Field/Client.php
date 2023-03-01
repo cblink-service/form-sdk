@@ -45,6 +45,20 @@ class Client extends BaseApi
     /**
      * @param $formCode
      * @param $id
+     * @param array $data
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function updateByField($formCode, $id, array $data = [])
+    {
+        return $this->httpPut(sprintf('/form/%s/field/%s', $formCode, $id), array_merge([
+            'find_type' => 'field',
+        ], $data));
+    }
+
+    /**
+     * @param $formCode
+     * @param $id
      * @param array $query
      * @return array|ResponseInterface|string
      * @throws GuzzleException
@@ -52,6 +66,20 @@ class Client extends BaseApi
     public function destroy($formCode, $id, array $query = [])
     {
         return $this->httpDelete(sprintf('/form/%s/field/%s', $formCode, $id), $query);
+    }
+
+    /**
+     * @param $formCode
+     * @param $id
+     * @param array $query
+     * @return array|ResponseInterface|string
+     * @throws GuzzleException
+     */
+    public function destroyByField($formCode, $id, array $query = [])
+    {
+        return $this->httpDelete(sprintf('/form/%s/field/%s', $formCode, $id), array_merge([
+            'find_type' => 'field',
+        ], $query));
     }
 
     /**
