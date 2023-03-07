@@ -90,6 +90,6 @@ class Client extends BaseApi
      */
     public function data($formCode, array $query = [])
     {
-        return $this->httpDelete(sprintf('/form/%s/field/data', $formCode), $query);
+        return $this->httpGet(sprintf('/form/%s/field/data', $formCode), $query);
     }
 }
